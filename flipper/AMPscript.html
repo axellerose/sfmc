@@ -1,0 +1,32 @@
+%%[
+/* Variables for user */
+var @blockOneID, @blockTwoID, @flipAnimationDuration, @contentBlockFront, @contentBlockBack, @flipDirection, @rotate
+
+/* Paste "Content Block ID" as a value in quotes "123456" */
+set @blockOneID = "162479"
+set @blockTwoID = "162434"
+
+/* Change animation duration in milliseconds. 1sec = 1000. Default value 600 */
+
+set @flipAnimationDuration = 600
+
+/* Choose flip direction: "horizontal" or "vertical". Default value is "vertical" */
+
+set @flipDirection = "vertical"
+
+
+
+/* ============================================================================= */
+
+/* Settings */
+
+set @contentBlockFront = ContentBlockByID(@blockOneID)
+set @contentBlockBack = ContentBlockByID(@blockTwoID)
+
+if @flipDirection == "vertical" then
+ set @rotate = "rotateX"
+else
+ set @rotate = "rotateY"
+endif
+
+]%%
