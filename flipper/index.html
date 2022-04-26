@@ -1,0 +1,78 @@
+<div class="flipper__wrapper">
+  <style type="text/css">
+    .flipper__wrapper {
+      color: #222;
+    }
+
+    label {
+      -webkit-transform-style: preserve-3d;
+      transform-style: preserve-3d;
+      display: block;
+      width: 100%;
+      height: 200px;
+      cursor: pointer;
+    }
+
+    .card {
+      height: 100%;
+      width: 100%;
+      -webkit-transform-style: preserve-3d;
+      transform-style: preserve-3d;
+      -webkit-transition-property: all;
+      -webkit-transition-duration: %%=v(@flipAnimationDuration)=%%ms;
+      transition-property: all;
+      transition-duration: %%=v(@flipAnimationDuration)=%%ms;
+    }
+
+    /* "backface-visibility" used to Hide the back face of two rotated <div> elements. */
+    .card div {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      background: #fff;
+      text-align: center;
+      line-height: 200px;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      border-radius: 2px;
+    }
+
+    /* Only back card remains rotated (hidden) by default */
+    .card .back {
+      background: #222;
+      color: #fff;
+      -webkit-transform: %%=v(@rotate)=%%(180deg);
+      transform: %%=v(@rotate)=%%(180deg);
+    }
+
+    label:hover .card {
+      -webkit-transform: %%=v(@rotate)=%%(20deg);
+      transform: %%=v(@rotate)=%%(20deg);
+      box-shadow: 0 20px 20px rgba(50, 50, 50, 0.2);
+    }
+
+    input {
+      display: none;
+    }
+
+    /* Since we hide only rotated div, we use :checked property to swap front and back. */
+   
+    :checked + .card {
+      transform: %%=v(@rotate)=%%(180deg);
+      -webkit-transform: %%=v(@rotate)=%%(180deg);
+    }
+        
+
+    label:hover :checked + .card {
+      transform: %%=v(@rotate)=%%(160deg);
+      -webkit-transform: %%=v(@rotate)=%%(160deg);
+      box-shadow: 0 20px 20px rgba(255, 255, 255, 0.2);
+    }
+  </style>
+  
+  <!-- Use label > input combination to controll state -->
+  <label>
+    <input type="checkbox">
+    <div class="card">
+      <div class="front">front %%=v(@contentBlockFront)=%%</div>
+      <div class="back">back %%=v(@contentBlockBack)=%%</div></div></label></div>
